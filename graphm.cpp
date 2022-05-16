@@ -1,5 +1,15 @@
 //--------------------------  class GraphM.cpp  ---------------------------------
-//  
+// Mohammad Zahid CSS343
+// 5/10/2022
+// 2/15/2022
+//--------------------------------------------------------------------------------------------------------------------
+// Purpose -This  project  is  to  implement  Dijkstra's  shortest  path  algorithm.  Your  code  should  be  able  to 
+// read  a  data  file  consisting  of  many  lines  (an  example  file  called  data31.txt  will  be  given, 
+// explained below) and will be able to find the lowest cost paths (findShortestPath function) and 
+// display  the  cost  and  path  from  every  node  to  every  other  node  (displayAll  function).    Another 
+// display routine (display function) will output one path in detail. 
+//---------------------------------------------------------------------------
+// Notes on specifications, special algorithms, and assumptions.  
 //---------------------------------------------------------------------------
 #include "graphm.h"
 #include <iomanip>
@@ -20,8 +30,8 @@ GraphM::GraphM() : data{}, size(0), T{}
         }
     }
 }
-// --------------------- Default Constructor -----------------------------------------
-// Destructor
+// --------------------- Destructor -----------------------------------------
+// Deletes graph
 // --------------------------------------------------------------
 GraphM::~GraphM()
 {
@@ -29,7 +39,6 @@ GraphM::~GraphM()
 }
 // --------------------- buildGraph() -----------------------------------------
 // Builds up graph node information and adjacency matrix of edges
-// between each node reading from a file
 // --------------------------------------------------------------
 void GraphM::buildGraph(ifstream &infile)
 {
@@ -52,7 +61,6 @@ void GraphM::buildGraph(ifstream &infile)
 }
 // --------------------- findShortestPath() -----------------------------------------
 // Finds the shortest path between every node to every other node
-// in the graph using Dijkstra's algorithm
 // --------------------------------------------------------------
 void GraphM::findShortestPath()
 {
@@ -110,7 +118,6 @@ void GraphM::removeEdge(int from, int to)
 
 // --------------------- displayAll() -----------------------------------------
 // Uses couts to demonstrate that the alogorithm works properly
-// Uses helper function findPath()
 // --------------------------------------------------------------
 
 void GraphM::displayAll()
@@ -137,9 +144,6 @@ void GraphM::displayAll()
 
 // --------------------- display() -----------------------------------------
 // Uses couts to display the shortest distance with path info between the
-// fromNode to the toNode
-// Uses helper function findPath()
-// Uses helper function findData()
 // --------------------------------------------------------------
 void GraphM::display(int from, int to)
 {
@@ -158,7 +162,9 @@ void GraphM::display(int from, int to)
     findD(from, to);
     cout << endl;
 }
-
+// --------------------- findD() -----------------------------------------
+// Helper function for Display 
+// --------------------------------------------------------------
 void GraphM::findD(int from, int to)
 {
     int v = T[from][to].path;
@@ -170,7 +176,9 @@ void GraphM::findD(int from, int to)
     }
     cout << endl;
 }
-
+// --------------------- findP() -----------------------------------------
+// Helper function for Display and DisplayAll
+// --------------------------------------------------------------
 void GraphM::findP(int from, int to)
 {
     int v = T[from][to].path;
@@ -181,7 +189,9 @@ void GraphM::findP(int from, int to)
         cout << to << " ";
     }
 }
-
+// --------------------- makeEmpty() -----------------------------------------
+// Helper function for destrucotr to empty graph
+// --------------------------------------------------------------
 void GraphM::makeEmpty()
 {
     size = 0;
