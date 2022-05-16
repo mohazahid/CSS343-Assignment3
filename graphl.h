@@ -30,7 +30,7 @@ public:
     void displayGraph();
 private:
     int size;
-    static int const MAXNODES = 100; 
+    static int const MAXNODES = 101; 
     struct EdgeNode;
     struct GraphNode
     {

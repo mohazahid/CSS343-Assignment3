@@ -147,6 +147,10 @@ void GraphM::displayAll()
 // --------------------------------------------------------------
 void GraphM::display(int from, int to)
 {
+    if( T[from][to].dist == INT32_MAX) {
+    cout << setw(7) << from << setw(7) << to << setw(15) << "----" << "\n\n";
+    return;
+    }
     if(from < 1 || from > size || to < 1 || to > size) {
         return;
     }
